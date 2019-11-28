@@ -5,8 +5,8 @@
 <!-- Intro -->
 <section class="site-section site-section-light site-section-top themed-background-dark">
     <div class="container">
-        <h1 class="animation-slideDown"><strong>Project Name</strong></h1>
-        <h2 class="h3 animation-slideUp">Single Project Page</h2>
+        <h1 class="animation-slideDown"><strong>Product Name</strong></h1>
+        <h2 class="h3 animation-slideUp">Single Product Page</h2>
     </div>
 </section>
 <!-- END Intro -->
@@ -16,7 +16,7 @@
     <div class="container">
         <!-- Project Navigation -->
         <div class="site-block clearfix">
-            <a href="<?php echo base_url('product') ?>" class="btn btn-primary pull-left"><i class="fa fa-th-large"></i> All projects</a>
+            <a href="<?php echo base_url('product') ?>" class="btn btn-primary pull-left"><i class="fa fa-th-large"></i> All product</a>
         </div>
         <!-- END Project Navigation -->
 
