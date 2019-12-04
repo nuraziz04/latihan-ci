@@ -11,6 +11,9 @@
                             <img src="<?php echo base_url() ?>assets-backend/img/account/login-logo.png" alt="Company Logo" />
                         </a>
                     </div>
+
+                    <?= $this->session->flashData('message') ?>
+
                     <hr>
                     <div class="login-form">
                         <!-- Start Error box -->

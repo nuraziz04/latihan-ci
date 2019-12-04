@@ -12,6 +12,9 @@
                             <img src="<?php echo base_url() ?>assets-backend/img/account/login-logo.png" alt="Company Logo">
                         </a>
                     </div>
+
+                    <?= $this->session->flashdata('message') ?>
+
                     <hr>
                     <div class="login-form">
                         <!-- BEGIN ERROR BOX -->
@@ -21,9 +24,11 @@
                             Your Error Message goes here
                         </div>
                         <!-- END ERROR BOX -->
-                        <form action="http://themes-lab.com/pixit/admin/index.html" method="post">
-                            <input type="text" placeholder="Username" class="input-field form-control user" />
-                            <input type="password" placeholder="Password" class="input-field form-control password" />
+                        <form action="<?= base_url('backend/auth') ?>" method="post">
+                            <input type="text" placeholder="Email" name="email" id="email" class="input-field form-control user" />
+                            <?= form_error('email') ?>
+                            <input type="password" placeholder="Password" name="password" id="password" class="input-field form-control password" />
+                            <?= form_error('password') ?>
                             <button type="submit" class="btn btn-login">Login</button>
                         </form>
                         <div class="login-links">

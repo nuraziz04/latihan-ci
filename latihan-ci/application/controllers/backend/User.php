@@ -1,6 +1,6 @@
 <?php
 
-Class Admin Extends CI_Controller {
+Class User Extends CI_Controller {
 
 	public function __construct()
 	{
@@ -11,7 +11,6 @@ Class Admin Extends CI_Controller {
 
 		$this->load->model('Admin_model', 'adm');
 		$this->load->library('form_validation');
-
 	}
 
 	public function index()
@@ -29,23 +28,5 @@ Class Admin Extends CI_Controller {
 		$this->load->view('templates/sidebar', $data);
 		$this->load->view('admin/index');
 		$this->load->view('templates/footer');
-
-
 	}
-
-	public function profile()
-	{
-		$email = $this->session->userdata('email');
-
-		$data['user'] = $this->adm->cekEmail($email);
-
-		$data['title'] = 'Admin - CV Dwi Abadi Teknik';
-
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar');
-		$this->load->view('admin/profile');
-		$this->load->view('templates/footer');
-
-	}
-
 }

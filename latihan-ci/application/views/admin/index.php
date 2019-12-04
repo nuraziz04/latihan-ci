@@ -33,28 +33,24 @@
                 <!--END METRO STATES-->
             </div>
             
-    
-            <div class="row-fluid">
-                <div class="span12 responsive" data-tablet="span12 fix-margin" data-desktop="span12">
-                    <!-- BEGIN CALENDAR PORTLET-->
-                    <div class="widget yellow">
-                        <div class="widget-title">
-                            <h4><i class="icon-calendar"></i> Calendar</h4>
-                            <span class="tools">
-                                <a href="javascript:;" class="icon-chevron-down"></a>
-                                <a href="javascript:;" class="icon-remove"></a>
-                            </span>
-                        </div>
-                        <div class="widget-body">
-                            <div id="calendar" class="has-toolbar"></div>
-                        </div>
-                    </div>
-                    <!-- END CALENDAR PORTLET-->
-                </div>
-                <div class="span5">
-
-                </div>
-            </div>
+             <div class="row-fluid">
+                 <div class="span12">
+                     <!-- BEGIN BLANK PAGE PORTLET-->
+                     <div class="widget red">
+                         <div class="widget-title">
+                             <h4><i class="icon-edit"></i> Blank Page </h4>
+                           <span class="tools">
+                               <a href="javascript:;" class="icon-chevron-down"></a>
+                               <a href="javascript:;" class="icon-remove"></a>
+                           </span>
+                         </div>
+                         <div class="widget-body">
+                             Blank page sample
+                         </div>
+                     </div>
+                     <!-- END BLANK PAGE PORTLET-->
+                 </div>
+             </div>
 
             <!-- END PAGE CONTENT-->         
          </div>

@@ -1,6 +1,6 @@
 <!-- BEGIN FOOTER -->
    <div id="footer">
-       2013 &copy; Metro Lab Dashboard.
+       <?= date('Y') ?> &copy; Dwi Abadi Teknik
    </div>
    <!-- END FOOTER -->
 

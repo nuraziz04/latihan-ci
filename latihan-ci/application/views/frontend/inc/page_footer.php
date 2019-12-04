@@ -37,7 +37,7 @@
                     </ul>
                 </div>
                 <div class="col-sm-6 col-md-3">
-                    <h4 class="footer-heading"><span id="">2020</span> &copy; <a href="<?php echo base_url() ?>">dwi abadi teknik</a></h4>
+                    <h4 class="footer-heading"><span id=""><?= date('Y') ?></span> &copy; <a href="<?php echo base_url() ?>">dwi abadi teknik</a></h4>
                     <ul class="footer-nav list-inline">
                         <li>Crafted with <i class="fa fa-heart text-danger"></i></li>
                     </ul>
