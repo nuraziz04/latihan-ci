@@ -5,9 +5,7 @@ Class User Extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		if (!$this->session->userdata('email')) {
-			redirect('backend/auth');
-		}
+		is_logged_in();
 
 		$this->load->model('Admin_model', 'adm');
 		$this->load->library('form_validation');

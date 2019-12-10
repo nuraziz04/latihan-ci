@@ -111,4 +111,8 @@ Class Auth Extends CI_Controller {
         redirect('backend/auth');
     }
 
+    public function blocked()
+    {
+    	$this->load->view('auth/blocked');
+    }
 }

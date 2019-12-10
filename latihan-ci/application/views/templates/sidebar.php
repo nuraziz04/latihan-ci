@@ -20,7 +20,6 @@ $client = new Client([
          <!-- END RESPONSIVE QUICK SEARCH FORM -->
          <!-- BEGIN SIDEBAR MENU -->
           <ul class="sidebar-menu">
-
             <?php foreach ($menu['data'] as $m): ?>
               <li class="sub-menu active">
                   <a class="" href="#">
@@ -41,8 +40,8 @@ $client = new Client([
 
               <?php foreach ($result['data'] as $sm): ?>
                 <li class="sub-menu">
-                    <a href="javascript:;" class="">
-                        <i class="icon-book"></i>
+                    <a href="<?= base_url($sm['url']) ?>" class="">
+                        <i class="<?= $sm['icon'] ?>"></i>
                         <span><?= $sm['title'] ?></span>
                     </a>
                 </li>

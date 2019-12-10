@@ -33,6 +33,17 @@
    <script src="<?php echo base_url() ?>assets-backend/js/home-page-calender.js"></script>
    <script src="<?php echo base_url() ?>assets-backend/js/chartjs.js"></script>
 
+   <script type="text/javascript" src="<?php echo base_url() ?>assets-backend/assets/uniform/jquery.uniform.min.js"></script>
+   <script type="text/javascript" src="<?php echo base_url() ?>assets-backend/assets/data-tables/jquery.dataTables.js"></script>
+   <script type="text/javascript" src="<?php echo base_url() ?>assets-backend/assets/data-tables/DT_bootstrap.js"></script>
+
+
+   <!--common script for all pages-->
+   <script src="<?php echo base_url() ?>assets-backend/js/common-scripts.js"></script>
+
+   <!--script for this page only-->
+   <script src="<?php echo base_url() ?>assets-backend/js/dynamic-table.js"></script>
+
    <!-- END JAVASCRIPTS -->   
 </body>
 <!-- END BODY -->
