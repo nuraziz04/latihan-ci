@@ -10,7 +10,6 @@ Class Menu Extends CI_Controller {
 
 		$this->load->model('Admin_model', 'adm');
 		$this->load->model('Menu_model', 'menu');
-		$this->load->library('form_validation');
 
 	}
 
@@ -27,16 +26,23 @@ Class Menu Extends CI_Controller {
 
 		$data['title'] = 'Admin - CV Dwi Abadi Teknik';
 
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('admin/menu', $data);
-		$this->load->view('templates/footer');
+		$this->form_validation->set_rules('idMenu', 'id menu', 'required');
+
+		if($this->form_validation->run() == false){
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/sidebar', $data);
+			$this->load->view('admin/menu', $data);
+			$this->load->view('templates/footer');
+		} else {
+			$this->menu->addUserMenu();
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! new User Menu has been created.</div>');
+				redirect('backend/menu');
+		}
+		
 	}
 
-	public function deletemenu($id)
+	public function editUserMenu()
 	{
-		$data = $this->menu->deletemenu($id);
-
 		$email = $this->session->userdata('email');
 		$roleId = $this->session->userdata('role_id');
 
@@ -48,9 +54,24 @@ Class Menu Extends CI_Controller {
 
 		$data['title'] = 'Admin - CV Dwi Abadi Teknik';
 
-		$this->load->view('templates/header', $data);
-		$this->load->view('templates/sidebar', $data);
-		$this->load->view('admin/menu', $data);
-		$this->load->view('templates/footer');
+		$this->form_validation->set_rules('idMenu', 'id menu', 'required');
+
+		if($this->form_validation->run() == false){
+			$this->load->view('templates/header', $data);
+			$this->load->view('templates/sidebar', $data);
+			$this->load->view('admin/menu', $data);
+			$this->load->view('templates/footer');
+		} else {
+			$this->menu->editUserMenu();
+			$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! User Menu has been updated.</div>');
+					redirect('backend/menu');
+		}
+	}
+
+	public function deletemenu($id)
+	{
+		$data = $this->menu->deletemenu($id);
+		$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">User Menu has been delete.</div>');
+		redirect('backend/menu');
 	}
 }

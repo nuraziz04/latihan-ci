@@ -23,6 +23,50 @@ class Menu_model extends CI_model
 		return $result;
 	}
 
+	public function getIdUserMenu($id)
+	{
+		$response = $this->_client->request('GET', 'menu', [
+			'query' => [
+				'id' => $id
+			]
+		]);
+
+		$result = json_decode($response->getBody()->getContents(), true);
+
+		return $result;
+	}
+
+	public function addUserMenu()
+	{
+		$data = [
+			'idMenu' => $this->input->post('idMenu')
+		]; 
+
+		$response = $this->_client->request('POST', 'menu', [
+			'form_params' => $data
+		]);
+
+		$result = json_decode($response->getBody()->getContents(), true);
+
+		return $result;
+	}
+
+	public function editUserMenu()
+	{
+		$data = [
+			'idMenu' => $this->input->post('idMenu'),
+			'id' => $this->input->post('id')
+		];
+
+		$response = $this->_client->request('PUT', 'menu', [
+			'form_params' => $data
+		]);
+
+		$result = json_decode($response->getBody()->getContents(), true);
+
+		return $result;
+	}
+
 	public function deletemenu($id)
 	{
 		$response = $this->_client->request('DELETE', 'menu', [

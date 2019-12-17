@@ -8,8 +8,8 @@
    <!-- Load javascripts at bottom, this will reduce page load time -->
    <script src="<?php echo base_url() ?>assets-backend/js/jquery-1.8.3.min.js"></script>
    <script src="<?php echo base_url() ?>assets-backend/js/jquery.nicescroll.js" type="text/javascript"></script>
-   <script type="<?php echo base_url() ?>assets-backend/text/javascript" src="assets/jquery-slimscroll/jquery-ui-1.9.2.custom.min.js"></script>
-   <script type="<?php echo base_url() ?>assets-backend/text/javascript" src="assets/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+   <script type="text/javascript" src="<?php echo base_url() ?>assets-backend/assets/jquery-slimscroll/jquery-ui-1.9.2.custom.min.js"></script>
+   <script type="text/javascript" src="<?php echo base_url() ?>assets-backend/assets/jquery-slimscroll/jquery.slimscroll.min.js"></script>
    <script src="<?php echo base_url() ?>assets-backend/assets/fullcalendar/fullcalendar/fullcalendar.min.js"></script>
    <script src="<?php echo base_url() ?>assets-backend/assets/bootstrap/js/bootstrap.min.js"></script>
 
