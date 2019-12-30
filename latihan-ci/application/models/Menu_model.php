@@ -79,4 +79,32 @@ class Menu_model extends CI_model
 
 		return $result;
 	}
+
+	public function getSubmenu()
+	{
+		$response = $this->_client->request('GET', 'submenu');
+
+		$result = json_decode($response->getBody()->getContents(), true);
+
+		return $result;
+	}
+
+	public function addSubMenu()
+	{
+		$data = [
+			'menuId' => $this->input->post('menuId'),
+			'title' => $this->input->post('title'),
+			'url' => $this->input->post('url'),
+			'icon' => $this->input->post('icon'),
+			'isActive' => $this->input->post('isActive')
+		];
+		
+		$response = $this->_client->request('POST', 'submenu', [
+			'form_params' => $data
+		]);
+
+		$result = json_decode($response->getBody()->getContents(), true);
+
+		return $result;
+	}
 }

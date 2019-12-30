@@ -25,7 +25,7 @@
                         </div>
                         <!-- END ERROR BOX -->
                         <form action="<?= base_url('backend/auth') ?>" method="post">
-                            <input type="text" placeholder="Email" name="email" id="email" class="input-field form-control user" />
+                            <input type="text" placeholder="Email" name="email" id="email" class="input-field form-control user" autofocus="autofocus" />
                             <?= form_error('email') ?>
                             <input type="password" placeholder="Password" name="password" id="password" class="input-field form-control password" />
                             <?= form_error('password') ?>

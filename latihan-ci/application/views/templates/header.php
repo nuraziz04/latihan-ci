@@ -19,6 +19,9 @@
    <link href="<?php echo base_url() ?>assets-backend/css/style-default.css" rel="stylesheet" id="style_color" />
    <link href="<?php echo base_url() ?>assets-backend/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css" rel="stylesheet" />
    <link href="<?php echo base_url() ?>assets-backend/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+
+   <link href="<?php echo base_url() ?>assets-backend/assets/fancybox/source/jquery.fancybox.css" rel="stylesheet" />
+   <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets-backend/assets/uniform/css/uniform.default.css" />
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
