@@ -47,7 +47,7 @@
                             </span>
                             </div>
                             <div class="widget-body">
-                                <button class="btn btn-success" data-toggle="modal" data-target="#newMenuModal"><i class="icon-plus icon-white"></i> Add Sub Menu</button>
+                                <button class="btn btn-success" data-toggle="modal" data-target="#newSubMenuModal"><i class="icon-plus icon-white"></i> Add Sub Menu</button>
                                 <br><br>
                                 <table class="table table-striped table-bordered" id="sample_1">
                                     <thead>
@@ -68,8 +68,8 @@
                                         <td class="hidden-phone"><?= $sm['url'] ?></td>
                                         <td class="hidden-phone"><?= $sm['icon'] ?></td>
                                         <td>
-                                            <button class="btn btn-primary" id="edit-menu" data-toggle="modal" data-target="#editMenuModal"><i class="icon-pencil"></i></button>
-                                            <button class="btn btn-danger" id="hapus-menu" data-toggle="modal" data-target="#deleteModal"><i class="icon-trash"></i></button>
+                                            <button class="btn btn-primary" onclick="return editSubMenu('<?= $sm['id'] ?>')" id="edit-submenu" data-toggle="modal" data-target="#editSubMenuModal"><i class="icon-pencil"></i></button>
+                                            <button class="btn btn-danger" onclick="return getId('<?= $sm['id'] ?>')" id="hapus-menu" data-toggle="modal" data-target="#deleteModal"><i class="icon-trash"></i></button>
                                         </td>
                                     </tr>
                                     <?php endforeach ?>
@@ -108,12 +108,12 @@
   </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="newMenuModal" tabindex="-1" role="dialog" aria-labelledby="newMenuModalLabel" aria-hidden="true">
+<!-- new sub menu Modal -->
+<div class="modal fade" id="newSubMenuModal" tabindex="-1" role="dialog" aria-labelledby="newSubMenuModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
       <div class="modal-content">
           <div class="modal-header">
-              <h5 class="modal-title" id="newMenuModalLabel">Add New Sub Menu</h5>
+              <h5 class="modal-title" id="newSubMenuModalLabel">Add New Sub Menu</h5>
           </div>
           <form action="<?= base_url('backend/menu/postSubMenu') ?>" method="post">
               <div class="modal-body">
@@ -168,28 +168,67 @@
       </div>
   </div>
 </div>
-<!-- edit -->
-<div class="modal fade" id="editMenuModal" tabindex="-1" role="dialog" aria-labelledby="editMenuModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editMenuModalLabel">Edit Menu</h5>
-            </div>
-            <form action="<?= base_url('backend/menu/editUserMenu'); ?>" method="post">
-                <input type="hidden" name="id" id="id" value="">
-                <div class="modal-body">
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="idMenu" name="idMenu">
+
+<!-- edit sub menu Modal -->
+<div class="modal fade" id="editSubMenuModal" tabindex="-1" role="dialog" aria-labelledby="editSubMenuModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="editSubMenuModalLabel">Add New Sub Menu</h5>
+          </div>
+          <form action="<?= base_url('backend/menu/editSubMenu') ?>" method="post">
+              <input type="hidden" name="id" id="id" value="">
+              <div class="modal-body">
+                    <div class="controls">
+                      <div class="input-icon left">
+                          <i class="icon-envelope"></i>
+                          <input type="text" class="span5" id="title" name="title" placeholder="Submenu title" autofocus="autofocus">
+                      </div>
+                      <div class="alert alert-danger" id="titleRequired" role="alert" style="display:none; width: 90%">Title field is required.</div>
                     </div>
-                </div>
-                <div class="modal-footer">
+                    <div class="controls">
+                      <div class="input-icon left">
+                          <i class="icon-envelope"></i>
+                          <select class="span5" name="menuId" id="menu" data-placeholder="Choose a Category" tabindex="1">
+                            <option value="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Select Menu</option>
+                            <?php foreach ($userMenu['data'] as $m) : ?>
+                            <option value="<?= $m['id'] ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $m['id_menu'] ?></option>
+                            <?php endforeach ?>
+                          </select>
+                      </div>
+                      <div class="alert alert-danger" id="menuRequired" role="alert" style="display:none; width: 90%">Menu field is required.</div>
+                    </div>
+                    <div class="controls">
+                      <div class="input-icon left">
+                          <i class="icon-envelope"></i>
+                          <input type="text" class="span5" id="url" name="url" placeholder="Submenu url">
+                      </div>
+                      <div class="alert alert-danger" id="urlRequired" role="alert" style="display:none; width: 90%">Url field is required.</div>
+                    </div>
+                    <div class="controls">
+                      <div class="input-icon left">
+                          <i class="icon-envelope"></i>
+                          <input type="text" class="span5" id="icon" name="icon" placeholder="Submenu icon">
+                      </div>
+                      <div class="alert alert-danger" id="iconRequired" role="alert" style="display:none; width: 90%">Icon field is required.</div>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="1" name="isActive" id="checkbox" checked>
+                            <label class="form-check-label" for="is_active">
+                                Active?
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Edit</button>
+                    <button id="btn" type="submit" class="btn btn-primary">Edit</button>
                 </div>
-             
-            </form>
-        </div>
-    </div>
+                </div>
+          </form>
+      </div>
+  </div>
 </div>
 
 <script type="text/javascript">
@@ -201,17 +240,27 @@
 
   function deleteMenu(){
     $id = $("#deleteModal").find("input[name='id']").val();
-    window.location.href = "<?= base_url('backend/menu/deletemenu/'); ?>"+$id;
+    window.location.href = "<?= base_url('backend/menu/deletesubmenu/'); ?>"+$id;
   }
 
-  function editUserMenu($id){
+  function editSubMenu($id){
     $.ajax({
-        url: 'http://localhost/rest-server-dwiabaditeknik/api/menu?id='+$id,
+        url: 'http://localhost/rest-server-dwiabaditeknik/api/submenu?id='+$id,
         contentType: "application/json",
         dataType: 'json',
         success: function(result){
-          $("#editMenuModal").find("input[name='id']").val(result.data.id);
-          $("#editMenuModal").find("input[name='idMenu']").val(result.data.id_menu);
+          $("#editSubMenuModal").find("input[name='id']").val(result.data.id);
+          $("#editSubMenuModal").find("input[name='title']").val(result.data.title);
+          $("#editSubMenuModal").find("select[name='menuId']").val(result.data.menu_id);
+          $("#editSubMenuModal").find("input[name='url']").val(result.data.url);
+          $("#editSubMenuModal").find("input[name='icon']").val(result.data.icon);
+
+          $isActive = result.data.is_active;
+          if ($isActive === '1') {
+            document.getElementById("checkbox").checked = true;
+          } else {
+            document.getElementById("checkbox").checked = false;
+          }
         }
     });
   }

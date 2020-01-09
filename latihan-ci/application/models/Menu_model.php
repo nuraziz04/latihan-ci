@@ -91,16 +91,65 @@ class Menu_model extends CI_model
 
 	public function addSubMenu()
 	{
+		$fg = $this->input->post('isActive');
+
+		if ($fg === NULL) {
+			$isActive = '0';
+		} else {
+			$isActive = '1';
+		}
+
 		$data = [
 			'menuId' => $this->input->post('menuId'),
 			'title' => $this->input->post('title'),
 			'url' => $this->input->post('url'),
 			'icon' => $this->input->post('icon'),
-			'isActive' => $this->input->post('isActive')
+			'isActive' => $isActive
 		];
 		
 		$response = $this->_client->request('POST', 'submenu', [
 			'form_params' => $data
+		]);
+
+		$result = json_decode($response->getBody()->getContents(), true);
+
+		return $result;
+	}
+
+	public function editSubMenu()
+	{
+		$fg = $this->input->post('isActive');
+
+		if ($fg === NULL) {
+			$isActive = '0';
+		} else {
+			$isActive = '1';
+		}
+
+		$data = [
+			'menuId' => $this->input->post('menuId'),
+			'title' => $this->input->post('title'),
+			'url' => $this->input->post('url'),
+			'icon' => $this->input->post('icon'),
+			'isActive' => $isActive,
+			'id' => $this->input->post('id')
+		];
+
+		$response = $this->_client->request('PUT', 'submenu', [
+			'form_params' => $data
+		]);
+
+		$result = json_decode($response->getBody()->getContents(), true);
+
+		return $result;
+	}
+
+	public function deletesubmenu($id)
+	{
+		$response = $this->_client->request('DELETE', 'submenu', [
+			'form_params' => [
+				'id' => $id
+			]
 		]);
 
 		$result = json_decode($response->getBody()->getContents(), true);
