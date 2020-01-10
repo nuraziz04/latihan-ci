@@ -32,7 +32,27 @@
 
   <!-- END JAVASCRIPTS -->
 
-   <!-- END JAVASCRIPTS -->   
+   <!-- END JAVASCRIPTS -->  
+
+  <script type="text/javascript">
+    $('.form-check-input').on('click', function() {
+      const roleId = $(this).data('role');
+      const menuId = $(this).data('menu');
+
+      $.ajax({
+        url: "<?php echo base_url('backend/admin/changeAccess'); ?>",
+        type: 'post',
+        data: {
+            roleId: roleId,
+            menuId: menuId
+        },
+        success: function() {
+            window.location.href = "<?php echo base_url('backend/admin/roleAccess/'); ?>" + roleId;
+        }
+      });
+    });
+  </script>
+
 </body>
 <!-- END BODY -->
 </html>

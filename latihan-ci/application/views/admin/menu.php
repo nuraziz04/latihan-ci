@@ -40,7 +40,7 @@
                         <!-- BEGIN BASIC PORTLET-->
                         <div class="widget orange">
                             <div class="widget-title">
-                                <h4><i class="icon-reorder"></i> List Menu Management</h4>
+                                <h4><i class="icon-archive"></i> List Menu Management</h4>
                             <span class="tools">
                                 <a href="javascript:;" class="icon-chevron-down"></a>
                                 <a href="javascript:;" class="icon-remove"></a>

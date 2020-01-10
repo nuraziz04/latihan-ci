@@ -51,3 +51,27 @@ function is_logged_in()
 
 	}
 }
+
+function check_access($roleId, $menuId)
+{
+	$client = new Client([
+      'http_errors' => false,
+      'base_uri' => 'http://localhost/rest-server-dwiabaditeknik/api/'
+    ]);
+    
+	$ci = get_instance();
+
+	// cek user access menu
+	$response = $client->request('GET', 'menu', [
+                'query' => [
+                  'roleId' => $roleId,
+                  'menuId' => $menuId
+                ]
+              ]);
+
+	$hasilCek = json_decode($response->getBody()->getContents(), true);
+
+	if($hasilCek['status'] === '00'){
+		return "checked='checked'";
+	}
+}
